@@ -11,6 +11,7 @@ def correction_factor():
             result = (8.29*(math.pow((math.log10(1.54*hr)), 2))) - 1.1
         elif fc >= 300:
             result = (3.2*(math.pow((math.log10(11.75*hr)), 2))) - 4.97
+    print("A(HR): ")
     print(result)
     return result
 
@@ -25,7 +26,7 @@ def path_loss(ahr):
     return result
 
 print(path_loss(correction_factor()))
-
+print("dB of path loss")
 
 
 
