@@ -21,9 +21,22 @@ def path_loss(ahr):
     hr = int(input("Input the height of received antenna (m): "))
     ht = int(input("Input the height of transmitting antenna: "))
     d = int(input("Input the propagation distance: "))
+    result = 0
     if area_kind == 1:
         result = 69.55 + (26.16*math.log10(fc)) - (13.82*math.log10(ht)) - ahr + ((44.9-(6.55*math.log10(ht)))*math.log10(d))
-    return result
+        return result
+    if area_kind == 2:
+        ldb_urban = 69.55 + (26.16*math.log10(fc)) - (13.82*math.log10(ht)) - ahr + ((44.9-(6.55*math.log10(ht)))*math.log10(d))
+        result = ldb_urban - (2 * math.sqrt(math.log10(fc/28))) - 5.4
+        return result
+    if area_kind == 3:
+        ldb_urban = 69.55 + (26.16 * math.log10(fc)) - (13.82 * math.log10(ht)) - ahr + (
+                    (44.9 - (6.55 * math.log10(ht))) * math.log10(d))
+        result = ldb_urban - (4.78 * math.sqrt(math.log10(fc))) - (418.733 * math.log10(fc)) - 40.98
+        return result
+    else:
+        return result
+
 
 print(path_loss(correction_factor()))
 print("dB of path loss")
